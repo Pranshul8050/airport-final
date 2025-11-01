@@ -1,0 +1,71 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+
+const Footer = () => {
+  return (
+    <footer className="bg-dark-navy text-white">
+      {/* Newsletter Section */}
+      <div className="bg-dark-navy py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-light text-center mb-4 tracking-wide">
+            Subscribe for Updates!
+          </h2>
+          <p className="text-center text-white/80 mb-8">
+            Get our latest flight destination information, shopping/dining and parking promotions sent directly to your inbox!
+          </p>
+          <div className="max-w-md mx-auto flex gap-4">
+            <Input
+              placeholder="EMAIL ADDRESS..."
+              className="bg-transparent border-2 border-white text-white placeholder:text-white/50"
+            />
+            <Button className="bg-primary hover:bg-primary/90 px-8">
+              JOIN US
+            </Button>
+          </div>
+          
+          {/* Social Icons */}
+          <div className="flex justify-center gap-6 mt-8">
+            <a href="#" className="hover:text-primary transition-colors">
+              <Instagram className="h-6 w-6" />
+            </a>
+            <a href="#" className="hover:text-primary transition-colors">
+              <Facebook className="h-6 w-6" />
+            </a>
+            <a href="#" className="hover:text-primary transition-colors">
+              <Twitter className="h-6 w-6" />
+            </a>
+            <a href="#" className="hover:text-primary transition-colors">
+              <Youtube className="h-6 w-6" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Footer */}
+      <div className="bg-navy py-8 border-t border-white/10">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="hover:text-primary transition-colors">Contact Us</a>
+              <a href="#" className="hover:text-primary transition-colors">Privacy and Cookies</a>
+            </div>
+            <div className="text-sm">
+              <span>Select Language</span>
+              <select className="ml-2 bg-navy border border-white/20 px-2 py-1 rounded">
+                <option>ENGLISH</option>
+                <option>HINDI</option>
+                <option>MARATHI</option>
+              </select>
+            </div>
+          </div>
+          <div className="text-center mt-6 text-sm text-white/60">
+            <p>Mumbai International Airport Authority © 2025</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
