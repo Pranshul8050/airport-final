@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      car_rental_bookings: {
+        Row: {
+          car_type: string
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string
+          pickup_date: string
+          pickup_time: string
+          return_date: string
+          return_time: string
+          status: string
+        }
+        Insert: {
+          car_type: string
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone: string
+          pickup_date: string
+          pickup_time: string
+          return_date: string
+          return_time: string
+          status?: string
+        }
+        Update: {
+          car_type?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string
+          pickup_date?: string
+          pickup_time?: string
+          return_date?: string
+          return_time?: string
+          status?: string
+        }
+        Relationships: []
+      }
       contact_messages: {
         Row: {
           created_at: string
@@ -38,6 +80,129 @@ export type Database = {
         }
         Relationships: []
       }
+      event_bookings: {
+        Row: {
+          created_at: string
+          email: string
+          event_date: string
+          event_name: string
+          id: string
+          name: string
+          phone: string
+          status: string
+          tickets: number
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          event_date: string
+          event_name: string
+          id?: string
+          name: string
+          phone: string
+          status?: string
+          tickets: number
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          event_date?: string
+          event_name?: string
+          id?: string
+          name?: string
+          phone?: string
+          status?: string
+          tickets?: number
+        }
+        Relationships: []
+      }
+      flight_bookings: {
+        Row: {
+          arrival_city: string
+          class: string
+          created_at: string
+          departure_city: string
+          departure_date: string
+          email: string
+          id: string
+          name: string
+          passengers: number
+          phone: string
+          return_date: string | null
+          status: string
+        }
+        Insert: {
+          arrival_city: string
+          class: string
+          created_at?: string
+          departure_city: string
+          departure_date: string
+          email: string
+          id?: string
+          name: string
+          passengers: number
+          phone: string
+          return_date?: string | null
+          status?: string
+        }
+        Update: {
+          arrival_city?: string
+          class?: string
+          created_at?: string
+          departure_city?: string
+          departure_date?: string
+          email?: string
+          id?: string
+          name?: string
+          passengers?: number
+          phone?: string
+          return_date?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      hotel_bookings: {
+        Row: {
+          check_in_date: string
+          check_out_date: string
+          created_at: string
+          email: string
+          guests: number
+          id: string
+          name: string
+          phone: string
+          room_type: string
+          special_requests: string | null
+          status: string
+        }
+        Insert: {
+          check_in_date: string
+          check_out_date: string
+          created_at?: string
+          email: string
+          guests: number
+          id?: string
+          name: string
+          phone: string
+          room_type: string
+          special_requests?: string | null
+          status?: string
+        }
+        Update: {
+          check_in_date?: string
+          check_out_date?: string
+          created_at?: string
+          email?: string
+          guests?: number
+          id?: string
+          name?: string
+          phone?: string
+          room_type?: string
+          special_requests?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       newsletter_subscriptions: {
         Row: {
           active: boolean
@@ -56,6 +221,48 @@ export type Database = {
           email?: string
           id?: string
           subscribed_at?: string
+        }
+        Relationships: []
+      }
+      package_bookings: {
+        Row: {
+          created_at: string
+          destination: string
+          duration_days: number
+          email: string
+          id: string
+          name: string
+          package_type: string
+          phone: string
+          status: string
+          travel_date: string
+          travelers: number
+        }
+        Insert: {
+          created_at?: string
+          destination: string
+          duration_days: number
+          email: string
+          id?: string
+          name: string
+          package_type: string
+          phone: string
+          status?: string
+          travel_date: string
+          travelers: number
+        }
+        Update: {
+          created_at?: string
+          destination?: string
+          duration_days?: number
+          email?: string
+          id?: string
+          name?: string
+          package_type?: string
+          phone?: string
+          status?: string
+          travel_date?: string
+          travelers?: number
         }
         Relationships: []
       }

@@ -1,5 +1,13 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Hotel, Car, Plane, Package, Calendar as CalendarIcon, MapPin } from "lucide-react";
+import { BookingModal } from "./BookingModal";
+import hotelLuxury from "@/assets/hotel-luxury.jpg";
+import carRental from "@/assets/car-rental.jpg";
+import flightBooking from "@/assets/flight-booking.jpg";
+import packageDeals from "@/assets/package-deals.jpg";
+import localEvents from "@/assets/local-events.jpg";
+import parkingGarage from "@/assets/parking-garage.jpg";
 
 const services = [
   {
@@ -41,27 +49,66 @@ const services = [
 ];
 
 const ServiceCards = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<{ type: 'hotel' | 'car' | 'flight' | 'package' | 'event' | 'parking'; image: string } | null>(null);
+
+  const handleServiceClick = (type: 'hotel' | 'car' | 'flight' | 'package' | 'event' | 'parking', image: string) => {
+    setSelectedService({ type, image });
+    setModalOpen(true);
+  };
+
+  const serviceImages: Record<string, string> = {
+    'BOOK HOTELS': hotelLuxury,
+    'RENT A CAR': carRental,
+    'BOOK FLIGHTS': flightBooking,
+    'BOOK PACKAGES': packageDeals,
+    'SEARCH LOCAL EVENTS': localEvents,
+    'RESERVE PARKING': parkingGarage
+  };
+
   return (
-    <div className="bg-white py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="p-10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer group border-0 shadow-md bg-white"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="p-4 rounded-full bg-primary/10 mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                  <service.icon className={`h-14 w-14 ${service.color} group-hover:text-white transition-colors`} />
+    <>
+      <div className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <Card
+                key={index}
+                onClick={() => {
+                  const typeMap: Record<string, 'hotel' | 'car' | 'flight' | 'package' | 'event' | 'parking'> = {
+                    'BOOK HOTELS': 'hotel',
+                    'RENT A CAR': 'car',
+                    'BOOK FLIGHTS': 'flight',
+                    'BOOK PACKAGES': 'package',
+                    'SEARCH LOCAL EVENTS': 'event',
+                    'RESERVE PARKING': 'parking'
+                  };
+                  handleServiceClick(typeMap[service.title], serviceImages[service.title]);
+                }}
+                className="p-10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer group border-0 shadow-md bg-white"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="p-4 rounded-full bg-primary/10 mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                    <service.icon className={`h-14 w-14 ${service.color} group-hover:text-white transition-colors`} />
+                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-3 tracking-wide">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
-                <h3 className="text-base font-bold text-foreground mb-3 tracking-wide">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+
+      {selectedService && (
+        <BookingModal
+          open={modalOpen}
+          onOpenChange={setModalOpen}
+          type={selectedService.type}
+          image={selectedService.image}
+        />
+      )}
+    </>
   );
 };
 

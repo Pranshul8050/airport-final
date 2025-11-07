@@ -6,6 +6,7 @@ import EnhanceExperience from "@/components/EnhanceExperience";
 import NewsSection from "@/components/NewsSection";
 import ShopDine from "@/components/ShopDine";
 import RewardsSection from "@/components/RewardsSection";
+import ParkingAvailability from "@/components/ParkingAvailability";
 import GoodToKnow from "@/components/GoodToKnow";
 import Footer from "@/components/Footer";
 
@@ -15,10 +16,11 @@ const Index = () => {
       <Navbar />
       <HeroCarousel />
       <QuickActions />
+      <ParkingAvailability />
+      <ServiceCards />
       <RewardsSection />
       <NewsSection />
       <ShopDine />
-      <ServiceCards />
       <EnhanceExperience />
       <GoodToKnow />
       <Footer />

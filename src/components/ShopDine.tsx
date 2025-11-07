@@ -14,20 +14,20 @@ const ShopDine = () => {
   ];
 
   return (
-    <section className="bg-background py-16">
+    <section className="bg-background py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-light text-center text-foreground mb-4 tracking-wider">
+        <h2 className="text-5xl md:text-6xl font-light text-center text-foreground mb-6 tracking-widest">
           SHOP & DINE
         </h2>
-        <p className="text-center text-muted-foreground mb-12 text-lg">
+        <p className="text-center text-muted-foreground mb-16 text-xl">
           Looking for Something Local?
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in"
+              className="group relative overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition-all duration-500 animate-fade-in cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="aspect-[4/3] overflow-hidden">
@@ -37,7 +37,9 @@ const ShopDine = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8">
+                <span className="text-white text-xl font-semibold tracking-wider">{image.alt}</span>
+              </div>
             </div>
           ))}
         </div>

@@ -11,3 +11,21 @@ verify_jwt = false
 
 [functions.get-news]
 verify_jwt = false
+
+[functions.book-hotel]
+verify_jwt = false
+
+[functions.book-car]
+verify_jwt = false
+
+[functions.book-flight]
+verify_jwt = false
+
+[functions.book-package]
+verify_jwt = false
+
+[functions.book-event]
+verify_jwt = false
+
+[functions.get-parking-availability]
+verify_jwt = false
